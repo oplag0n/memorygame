@@ -1,7 +1,7 @@
 /*
  * Create a list that holds all of your cards
  */
-let cards = ['fa-diamond', 'fa-diamond', 'fa-paper-plane-o', 'fa-paper-plane-o', 'fa-anchor', 'fa-anchor', 'fa-bolt', 'fa-bolt', 'fa-cube', 'fa-cube', 'fa-leaf', 'fa-leaf', 'fa-bicycle', 'fa-bicycle', 'fa-bomb', 'fa-bomb']
+let cards = ['fa-diamond', 'fa-diamond', 'fa-paper-plane-o', 'fa-paper-plane-o', 'fa-anchor', 'fa-anchor', 'fa-bolt', 'fa-bolt', 'fa-cube', 'fa-cube', 'fa-leaf', 'fa-leaf', 'fa-bicycle', 'fa-bicycle', 'fa-bomb', 'fa-bomb'];
 
 /*
  * Display the cards on the page
@@ -9,6 +9,19 @@ let cards = ['fa-diamond', 'fa-diamond', 'fa-paper-plane-o', 'fa-paper-plane-o',
  *   - loop through each card and create its HTML
  *   - add each card's HTML to the page
  */
+function displayCards(cards) {
+    let shuffled = shuffle(cards);
+    console.log(shuffled)
+    let cardElements = document.getElementsByClassName('card');   
+    console.log(cardElements);
+    for (let i =0; i < cardElements.length; i++) {
+        console.log(cardElements[i].childNodes[0].className)
+        cardElements[i].firstChild.className = shuffled[i] + ' fa';
+        console.log(cardElements[i].className)
+    }
+
+}
+
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -25,7 +38,7 @@ function shuffle(array) {
     return array;
 }
 
-
+displayCards(cards);
 /*
  * set up the event listener for a card. If a card is clicked:
  *  - display the card's symbol (put this functionality in another function that you call from this one)
