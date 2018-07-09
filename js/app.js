@@ -15,8 +15,8 @@ function displayCards(cards) {
     let cardElements = document.getElementsByClassName('card');   
     console.log(cardElements);
     for (let i =0; i < cardElements.length; i++) {
-        console.log(cardElements[i].childNodes[0].className)
-        cardElements[i].firstChild.className = shuffled[i] + ' fa';
+        console.log(cardElements[i].children[0].className)
+        cardElements[i].children[0].className = shuffled[i] + ' fa';
         console.log(cardElements[i].className)
     }
 
@@ -39,6 +39,7 @@ function shuffle(array) {
 }
 
 displayCards(cards);
+
 /*
  * set up the event listener for a card. If a card is clicked:
  *  - display the card's symbol (put this functionality in another function that you call from this one)
@@ -49,3 +50,5 @@ displayCards(cards);
  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
+
+ let cardElements = document.getElementsByClassName('card')
