@@ -48,12 +48,18 @@ displayCards(cards);
  */
 
  let cardElements = document.getElementsByClassName('card');
+ let matchedIndex = 0;
  let openCards = []; 
  for (let i = 0; i < cardElements.length; i++) {
     cardElements[i].addEventListener('click', function() {
         showCard(this);
         if (openCards.length > 1) {
-            cardCheck();
+            if (cardCheck()) {
+                lockOpen();}
+            // } else {
+
+            // }
+            
         }
     });
 }
@@ -71,4 +77,13 @@ function addOpenCard(target) {
 
 function cardCheck() {
     return (openCards[0] === openCards[1]);
+}
+
+function lockOpen() {
+    let openElements = document.getElementsByClassName('open');
+    for (let i = 0; i < openElements.length; i++) {
+        matched++;
+        openElements[i].className = "card match";
+    }
+
 }
