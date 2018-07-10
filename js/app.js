@@ -52,7 +52,9 @@ displayCards(cards);
  for (let i = 0; i < cardElements.length; i++) {
     cardElements[i].addEventListener('click', function() {
         showCard(this);
-
+        if (openCards.length > 1) {
+            cardCheck();
+        }
     });
 }
 
@@ -65,4 +67,8 @@ function addOpenCard(target) {
     let res = target.children[0].className.split(" ");
     openCards.push(res[0]);
     console.log(openCards);
+}
+
+function cardCheck() {
+    return (openCards[0] === openCards[1]);
 }
