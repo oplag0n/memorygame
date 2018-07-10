@@ -11,13 +11,9 @@ let cards = ['fa-diamond', 'fa-diamond', 'fa-paper-plane-o', 'fa-paper-plane-o',
  */
 function displayCards(cards) {
     let shuffled = shuffle(cards);
-    console.log(shuffled)
     let cardElements = document.getElementsByClassName('card');   
-    console.log(cardElements);
     for (let i =0; i < cardElements.length; i++) {
-        console.log(cardElements[i].children[0].className)
         cardElements[i].children[0].className = shuffled[i] + ' fa';
-        console.log(cardElements[i].className)
     }
 
 }
@@ -52,10 +48,13 @@ displayCards(cards);
  */
 
  let cardElements = document.getElementsByClassName('card');
- cardElements.addEventListener('click', function() {
-    show(this);
- });
+ for (let i = 0; i < cardElements.length; i++) {
+    cardElements[i].addEventListener('click', function() {
+        showCard(this);
 
- function show(target) {
-     target.children[0].className += ' open'
- }
+    });
+}
+
+function showCard(target) {
+    target.className += ' open show';
+}
