@@ -51,4 +51,11 @@ displayCards(cards);
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
 
- let cardElements = document.getElementsByClassName('card')
+ let cardElements = document.getElementsByClassName('card');
+ cardElements.addEventListener('click', function() {
+    show(this);
+ });
+
+ function show(target) {
+     target.children[0].className += ' open'
+ }
