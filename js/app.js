@@ -48,6 +48,7 @@ displayCards(cards);
  */
 
  let cardElements = document.getElementsByClassName('card');
+ let openCards = []; 
  for (let i = 0; i < cardElements.length; i++) {
     cardElements[i].addEventListener('click', function() {
         showCard(this);
@@ -57,4 +58,11 @@ displayCards(cards);
 
 function showCard(target) {
     target.className += ' open show';
+    addOpenCard(target);
+}
+
+function addOpenCard(target) {
+    let res = target.children[0].className.split(" ");
+    openCards.push(res[0]);
+    console.log(openCards);
 }
