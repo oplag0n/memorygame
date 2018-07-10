@@ -55,10 +55,11 @@ displayCards(cards);
         showCard(this);
         if (openCards.length > 1) {
             if (cardCheck()) {
-                lockOpen();}
-            // } else {
-
-            // }
+                lockOpen();
+                clearList(openCards);
+            } else {
+                
+            }
             
         }
     });
@@ -73,6 +74,12 @@ function addOpenCard(target) {
     let res = target.children[0].className.split(" ");
     openCards.push(res[0]);
     console.log(openCards);
+}
+
+function clearList(array) {
+    for (let i = 0; i < array.length; i++) {
+        array.pop();
+    }
 }
 
 function cardCheck() {
