@@ -56,9 +56,8 @@ displayCards(cards);
         if (openCards.length > 1) {
             if (cardCheck()) {
                 lockOpen();
-                clearList(openCards);
             } else {
-                
+                closeCards();
             }
             
         }
@@ -92,5 +91,13 @@ function lockOpen() {
         matched++;
         openElements[i].className = "card match";
     }
+    clearList(openCards);
+}
 
+function closeCards() {
+    let openElements = document.getElementsByClassName('open');
+    for (let i = 0; i < openElements.length; i++) {
+        openElements[i].className = "card";
+    }
+    clearList(openCards);
 }
