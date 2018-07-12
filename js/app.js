@@ -51,22 +51,25 @@ displayCards(cards);
  let matchedIndex = 0;
  let openCards = []; 
  for (let i = 0; i < cardElements.length; i++) {
-    cardElements[i].addEventListener('click', function() {
-        showCard(this);
-        if (openCards.length > 1) {
-            if (cardCheck()) {
-                lockOpen();
-            } else {
-                closeCards();
-            }
-            
+    cardElements[i].addEventListener('click', mainAction(event));
+}
+
+function mainAction(event) {
+    showCard(event.target);
+    if (openCards.length > 1) {
+        if (cardCheck()) {
+            lockOpen();
+        } else {
+            closeCards();
         }
-    });
+        
+    }
 }
 
 function showCard(target) {
     target.className += ' open show';
     addOpenCard(target);
+    target.removeEventListener('click');
 }
 
 function addOpenCard(target) {
@@ -88,7 +91,7 @@ function cardCheck() {
 function lockOpen() {
     let openElements = document.getElementsByClassName('open');
     for (let i = 0; i < openElements.length; i++) {
-        matched++;
+        matchedIndex++;
         openElements[i].className = "card match";
     }
     clearList(openCards);
@@ -98,6 +101,7 @@ function closeCards() {
     let openElements = document.getElementsByClassName('open');
     for (let i = 0; i < openElements.length; i++) {
         openElements[i].className = "card";
+        openElements[i].addEventListener('click', mainAction(event));
     }
     clearList(openCards);
 }
