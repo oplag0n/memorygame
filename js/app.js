@@ -103,13 +103,13 @@ function lockOpen() {
 function closeCards() {
     console.log("closeCards called");
     let openElements = document.getElementsByClassName('open');
-    console.log(openElements);
+    console.dir(openElements);
     for (let i = 0; i < openElements.length; i++) {
         console.log(openElements[i]);
         openElements[i].className = "card";
-        console.log(openElements[i].className);
-        //openElements[i].addEventListener('click', mainAction);
+        //console.log(openElements[i].className);
+        openElements[i].addEventListener('click', mainAction);
     }
     clearList(openCards);
-    console.log(openCards);
+    console.dir(openCards);
 }
