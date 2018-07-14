@@ -57,6 +57,7 @@ displayCards(cards);
 function mainAction(event) {
     showCard(event.target);
     if (openCards.length > 1) {
+        console.log("openCards >1");
         if (cardCheck()) {
             lockOpen();
         } else {
@@ -70,6 +71,7 @@ function showCard(target) {
     target.className += ' open show';
     addOpenCard(target);
     target.removeEventListener('click', mainAction);
+    console.log("showCard");
 }
 
 function addOpenCard(target) {
@@ -79,16 +81,17 @@ function addOpenCard(target) {
 }
 
 function clearList(array) {
-    for (let i = 0; i < array.length; i++) {
-        array.pop();
-    }
+    array.pop();
+    array.pop();
 }
 
 function cardCheck() {
+    console.log("cardCheck");
     return (openCards[0] === openCards[1]);
 }
 
 function lockOpen() {
+    console.log("lock open called");
     let openElements = document.getElementsByClassName('open');
     for (let i = 0; i < openElements.length; i++) {
         matchedIndex++;
@@ -98,10 +101,15 @@ function lockOpen() {
 }
 
 function closeCards() {
+    console.log("closeCards called");
     let openElements = document.getElementsByClassName('open');
+    console.log(openElements);
     for (let i = 0; i < openElements.length; i++) {
+        console.log(openElements[i]);
         openElements[i].className = "card";
-        openElements[i].addEventListener('click', mainAction());
+        console.log(openElements[i].className);
+        //openElements[i].addEventListener('click', mainAction);
     }
     clearList(openCards);
+    console.log(openCards);
 }
