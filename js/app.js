@@ -51,7 +51,7 @@ displayCards(cards);
  let matchedIndex = 0;
  let openCards = []; 
  for (let i = 0; i < cardElements.length; i++) {
-    cardElements[i].addEventListener('click', mainAction(event));
+    cardElements[i].addEventListener('click', mainAction);
 }
 
 function mainAction(event) {
@@ -69,7 +69,7 @@ function mainAction(event) {
 function showCard(target) {
     target.className += ' open show';
     addOpenCard(target);
-    target.removeEventListener('click');
+    target.removeEventListener('click', mainAction);
 }
 
 function addOpenCard(target) {
@@ -101,7 +101,7 @@ function closeCards() {
     let openElements = document.getElementsByClassName('open');
     for (let i = 0; i < openElements.length; i++) {
         openElements[i].className = "card";
-        openElements[i].addEventListener('click', mainAction(event));
+        openElements[i].addEventListener('click', mainAction());
     }
     clearList(openCards);
 }
