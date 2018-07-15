@@ -50,6 +50,7 @@ displayCards(cards);
  let cardElements = document.getElementsByClassName('card');
  let matchedIndex = 0;
  let openCards = []; 
+ let moves = 0;
  for (let i = 0; i < cardElements.length; i++) {
     cardElements[i].addEventListener('click', mainAction);
 }
@@ -58,6 +59,7 @@ function mainAction(event) {
     showCard(event.target);
     if (openCards.length > 1) {
         console.log("openCards >1");
+        count();
         if (cardCheck()) {
             lockOpen();
         } else {
@@ -92,7 +94,7 @@ function cardCheck() {
 
 function lockOpen() {
     console.log("lock open called");
-    let openElements = document.getElementsByClassName('open');
+    let openElements = Array.from(document.getElementsByClassName('open'));
     for (let i = 0; i < openElements.length; i++) {
         matchedIndex++;
         openElements[i].className = "card match";
@@ -101,15 +103,24 @@ function lockOpen() {
 }
 
 function closeCards() {
-    console.log("closeCards called");
-    let openElements = document.getElementsByClassName('open');
-    console.dir(openElements);
-    for (let i = 0; i < openElements.length; i++) {
-        console.log(openElements[i]);
-        openElements[i].className = "card";
-        //console.log(openElements[i].className);
-        openElements[i].addEventListener('click', mainAction);
-    }
-    clearList(openCards);
-    console.dir(openCards);
+    setTimeout( function() {
+        console.log("closeCards called");
+        let openElements = Array.from(document.getElementsByClassName('open'));
+        console.dir(openElements);
+        for (let i = 0; i < openElements.length ; i++) {
+            console.log(openElements[i]);
+            openElements[i].className = "card";
+            //console.log(openElements[i].className);
+            openElements[i].addEventListener('click', mainAction);
+        }
+        clearList(openCards);
+        console.dir(openCards);
+    }, 1000);
+    
+}
+
+function count() {
+    moves++;
+    let score = document.querySelector(".moves");
+    score.innerHTML = moves;
 }
