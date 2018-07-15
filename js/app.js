@@ -18,7 +18,6 @@ function displayCards(cards) {
 
 }
 
-
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
@@ -49,6 +48,7 @@ displayCards(cards);
 
  let cardElements = document.getElementsByClassName('card');
  let matchedIndex = 0;
+ const totalCards = 16;
  let openCards = []; 
  let moves = 0;
  for (let i = 0; i < cardElements.length; i++) {
@@ -64,9 +64,6 @@ function mainAction(event) {
         } else {
             closeCards();
         } 
-    }
-    if (matchedIndex === 15) {
-        win();
     }
 }
 
@@ -91,7 +88,6 @@ function cardCheck() {
 }
 
 function lockOpen() {
-    console.log("lock open called");
     let openElements = Array.from(document.getElementsByClassName('open'));
     for (let i = 0; i < openElements.length; i++) {
         matchedIndex++;
@@ -119,5 +115,5 @@ function count() {
 }
 
 function win() {
-    prompt ("Congratulations! You won the game with "+moves+" moves!");
+            prompt ("Congratulations! You won the game with "+moves+" moves!");
 }
