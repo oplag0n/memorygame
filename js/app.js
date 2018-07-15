@@ -58,14 +58,15 @@ displayCards(cards);
 function mainAction(event) {
     showCard(event.target);
     if (openCards.length > 1) {
-        console.log("openCards >1");
         count();
         if (cardCheck()) {
             lockOpen();
         } else {
             closeCards();
-        }
-        
+        } 
+    }
+    if (matchedIndex === 15) {
+        win();
     }
 }
 
@@ -73,13 +74,11 @@ function showCard(target) {
     target.className += ' open show';
     addOpenCard(target);
     target.removeEventListener('click', mainAction);
-    console.log("showCard");
 }
 
 function addOpenCard(target) {
     let res = target.children[0].className.split(" ");
     openCards.push(res[0]);
-    console.log(openCards);
 }
 
 function clearList(array) {
@@ -88,7 +87,6 @@ function clearList(array) {
 }
 
 function cardCheck() {
-    console.log("cardCheck");
     return (openCards[0] === openCards[1]);
 }
 
@@ -104,17 +102,12 @@ function lockOpen() {
 
 function closeCards() {
     setTimeout( function() {
-        console.log("closeCards called");
         let openElements = Array.from(document.getElementsByClassName('open'));
-        console.dir(openElements);
         for (let i = 0; i < openElements.length ; i++) {
-            console.log(openElements[i]);
             openElements[i].className = "card";
-            //console.log(openElements[i].className);
             openElements[i].addEventListener('click', mainAction);
         }
         clearList(openCards);
-        console.dir(openCards);
     }, 1000);
     
 }
@@ -123,4 +116,8 @@ function count() {
     moves++;
     let score = document.querySelector(".moves");
     score.innerHTML = moves;
+}
+
+function win() {
+    prompt ("Congratulations! You won the game with "+moves+" moves!");
 }
