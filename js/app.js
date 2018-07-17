@@ -55,8 +55,13 @@ let moves = 0;
 
 deck.addEventListener('click', event => {
     const clickTarget = event.target;
-    if (clickTarget.classList.contains('card')){ 
-        taggleCard(clickTarget);
+    if (clickTarget.classList.contains('card') && 
+    openCards.length < 2){ 
+        toggleCard(clickTarget);
+        addOpenCard(clickTarget);
+        if (openCards.length === 2) {
+            console.log("2 cards");
+        }
     }
 });
 
@@ -87,9 +92,9 @@ function showCard(target) {
     target.removeEventListener('click', mainAction);
 }
 
-function addOpenCard(target) {
-    let res = target.children[0].className.split(" ");
-    openCards.push(res[0]);
+function addOpenCard(clickTarget) {
+    openCards.push(clickTarget);
+    console.log(openCards);
 }
 
 function clearList(array) {
