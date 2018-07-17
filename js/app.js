@@ -56,10 +56,14 @@ let moves = 0;
 deck.addEventListener('click', event => {
     const clickTarget = event.target;
     if (clickTarget.classList.contains('card')){ 
-        clickTarget.classList.toggle('open');
-        clickTarget.classList.toggle('show');
+        taggleCard(clickTarget);
     }
 });
+
+function toggleCard(clickTarget) {
+    clickTarget.classList.toggle('open');
+    clickTarget.classList.toggle('show');
+}
 
 // for (let i = 0; i < cardElements.length; i++) {
 //     cardElements[i].addEventListener('click', mainAction);
