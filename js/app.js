@@ -55,12 +55,10 @@ let moves = 0;
 
 deck.addEventListener('click', event => {
     const clickTarget = event.target;
-    if (clickTarget.classList.contains('card') && 
-    openCards.length < 2){ 
+    if (isClickValid(clickTarget)) {
         toggleCard(clickTarget);
         addOpenCard(clickTarget);
         if (openCards.length === 2) {
-            console.log("2 cards");
             cardCheck();
         }
     }
@@ -69,6 +67,15 @@ deck.addEventListener('click', event => {
 function toggleCard(clickTarget) {
     clickTarget.classList.toggle('open');
     clickTarget.classList.toggle('show');
+}
+
+function isClickValid(clickTarget) {
+    return (
+        clickTarget.classList.contains('card') &&
+        clickTarget.classList.contains('match') && 
+        openCards.length < 2 &&
+        !openCards.includes(clickTarget)
+    );
 }
 
 // for (let i = 0; i < cardElements.length; i++) {
