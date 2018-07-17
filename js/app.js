@@ -17,6 +17,7 @@ function displayCards(cards) {
     }
 
 }
+displayCards(cards);
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -33,7 +34,7 @@ function shuffle(array) {
     return array;
 }
 
-displayCards(cards);
+
 
 /*
  * set up the event listener for a card. If a card is clicked:
@@ -147,7 +148,7 @@ function closeCards() {
     
 }
 
-function count() {
+function countMove() {
     moves++;
     let score = document.querySelector(".moves");
     score.innerHTML = moves;
