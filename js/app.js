@@ -103,7 +103,17 @@ function clearList(array) {
 }
 
 function cardCheck() {
-    return (openCards[0] === openCards[1]);
+    if (openCards[0].firstElementChild.className === 
+            openCards[1].firstElementChild.className) {
+        openCards[0].classList.toggle("match");
+        openCards[1].classList.toggle("match");
+        openCards = [];
+        } else {
+            console.log("Not a match");
+            openCards = [];
+            toggleCard(openCards[0]);
+            toggleCard(openCards[1]);
+        }
 }
 
 function lockOpen() {
