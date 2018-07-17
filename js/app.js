@@ -61,6 +61,8 @@ deck.addEventListener('click', event => {
         addOpenCard(clickTarget);
         if (openCards.length === 2) {
             cardCheck();
+            countMove();
+            checkScore();
         }
     }
 });
@@ -73,7 +75,7 @@ function toggleCard(clickTarget) {
 function isClickValid(clickTarget) {
     return (
         clickTarget.classList.contains('card') &&
-        clickTarget.classList.contains('match') && 
+        !clickTarget.classList.contains('match') && 
         openCards.length < 2 &&
         !openCards.includes(clickTarget)
     );
@@ -152,6 +154,22 @@ function countMove() {
     moves++;
     let score = document.querySelector(".moves");
     score.innerHTML = moves;
+}
+
+function checkScore() {
+    if (moves === 16 || moves === 24) {
+        hideStar();
+    }
+}
+
+function hideStar() {
+    const stars = document.querySelectorAll('.stars li');
+    for (star of stars) {
+        if (star.style.display !== 'none') {
+            star.style.display = 'none';
+            break;
+        }
+    }
 }
 
 function win() {
