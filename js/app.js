@@ -56,7 +56,8 @@ let moves = 0;
 deck.addEventListener('click', event => {
     const clickTarget = event.target;
     if (clickTarget.classList.contains('card')){ 
-        console.log('im a card!');
+        clickTarget.classList.toggle('open');
+        clickTarget.classList.toggle('show');
     }
 });
 
