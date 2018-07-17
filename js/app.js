@@ -61,6 +61,7 @@ deck.addEventListener('click', event => {
         addOpenCard(clickTarget);
         if (openCards.length === 2) {
             console.log("2 cards");
+            cardCheck();
         }
     }
 });
