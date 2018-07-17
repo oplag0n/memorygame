@@ -46,14 +46,23 @@ displayCards(cards);
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
 
- let cardElements = document.getElementsByClassName('card');
- let matchedIndex = 0;
- const totalCards = 16;
- let openCards = []; 
- let moves = 0;
- for (let i = 0; i < cardElements.length; i++) {
-    cardElements[i].addEventListener('click', mainAction);
-}
+const deck = document.querySelector('.deck');
+let cardElements = document.getElementsByClassName('card');
+let matchedIndex = 0;
+const totalCards = 16;
+let openCards = []; 
+let moves = 0;
+
+deck.addEventListener('click', event => {
+    const clickTarget = event.target;
+    if (clickTarget.classList.contains('card')){ 
+        console.log('im a card!');
+    }
+});
+
+// for (let i = 0; i < cardElements.length; i++) {
+//     cardElements[i].addEventListener('click', mainAction);
+// }
 
 function mainAction(event) {
     showCard(event.target);
