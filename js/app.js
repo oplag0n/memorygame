@@ -109,10 +109,12 @@ function cardCheck() {
         openCards[1].classList.toggle("match");
         openCards = [];
         } else {
-            console.log("Not a match");
-            openCards = [];
-            toggleCard(openCards[0]);
-            toggleCard(openCards[1]);
+            setTimeout(() => {
+                console.log("Not a match");
+                toggleCard(openCards[0]);
+                toggleCard(openCards[1]);
+                openCards = [];
+            }, 1000);
         }
 }
 
