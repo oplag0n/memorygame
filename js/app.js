@@ -106,9 +106,6 @@ function isClickValid(clickTarget) {
     );
 }
 
-// for (let i = 0; i < cardElements.length; i++) {
-//     cardElements[i].addEventListener('click', mainAction);
-// }
 
 function mainAction(event) {
     showCard(event.target);
@@ -246,6 +243,29 @@ function getStars() {
     }
 }
 
-function win() {
-            prompt ("Congratulations! You won the game with "+moves+" moves!");
+function resetGame() {
+    resetClockAndTime();
+    resetMoves();
+    resetStars();
+    displayCards();
+}
+
+function resetClockAndTime() {
+    stopClock();
+    clockOff = true;
+    time = 0;
+    displayTime(); 
+}
+
+function resetMoves() {
+    moves = 0;
+    document.querySelector('.moves').innerHTML = moves;
+}
+
+function resetStars() {
+    stars = 0;
+    const starList = document.querySelectorAll('.stars li');
+    for (star of starList) {
+        star.style.display = 'inline';
+    }
 }
