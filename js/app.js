@@ -61,7 +61,7 @@ let clockId;
 
 
 
-// Event Listener
+// Event Listeners
 
 deck.addEventListener('click', event => {
     const clickTarget = event.target;
@@ -80,6 +80,14 @@ deck.addEventListener('click', event => {
             checkScore();
         }
     }
+});
+
+document.querySelector('.modal__cancel').addEventListener('click', () => {
+    toggleModal();
+});
+
+document.querySelector('.modal__replay').addEventListener('click', () => {
+    console.log(replay);
 });
 
 // Functions
