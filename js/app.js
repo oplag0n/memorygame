@@ -211,6 +211,11 @@ function stopClock() {
     clearInterval(clockId);
 }
 
+function toggleModal() {
+    const modal = document.querySelector(".modal__background");
+    modal.classList.toggle('hide');
+}
+
 function win() {
             prompt ("Congratulations! You won the game with "+moves+" moves!");
 }
