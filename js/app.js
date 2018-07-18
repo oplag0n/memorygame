@@ -57,6 +57,7 @@ let openCards = [];
 let moves = 0;
 let clockOff = true;
 let time = 0;
+let clockId;
 
 
 
@@ -189,7 +190,7 @@ function hideStar() {
 }
 
 function startClock() {
-    let clockId = setInterval(() => {
+    clockId = setInterval(() => {
         time++;
     }, 1000);
 }
@@ -204,6 +205,10 @@ function displayTime() {
     } else {
         clock.innerHTML = `${minutes}:${seconds}`;
     }
+}
+
+function stopClock() {
+    clearInterval(clockId);
 }
 
 function win() {
