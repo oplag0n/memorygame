@@ -47,16 +47,30 @@ function shuffle(array) {
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
 
+ //Global Variables
+
 const deck = document.querySelector('.deck');
 let cardElements = document.getElementsByClassName('card');
 let matchedIndex = 0;
 const totalCards = 16;
 let openCards = []; 
 let moves = 0;
+let clockOff = true;
+let time = 0;
+
+
+
+// Event Listener
 
 deck.addEventListener('click', event => {
     const clickTarget = event.target;
+    displayTime();
     if (isClickValid(clickTarget)) {
+        displayTime();
+        if (clockOff) {
+            startClock();
+            clockOff = false;
+        }
         toggleCard(clickTarget);
         addOpenCard(clickTarget);
         if (openCards.length === 2) {
@@ -66,6 +80,8 @@ deck.addEventListener('click', event => {
         }
     }
 });
+
+// Functions
 
 function toggleCard(clickTarget) {
     clickTarget.classList.toggle('open');
@@ -169,6 +185,24 @@ function hideStar() {
             star.style.display = 'none';
             break;
         }
+    }
+}
+
+function startClock() {
+    let clockId = setInterval(() => {
+        time++;
+    }, 1000);
+}
+
+function displayTime() {
+    const clock = document.querySelector('.clock');
+    console.log(clock);
+    const minutes = Math.floor(time / 60);
+    const seconds = time % 60;
+    if (seconds < 10) {
+        clock.innerHTML = `${minutes}:0${seconds}`;
+    } else {
+        clock.innerHTML = `${minutes}:${seconds}`;
     }
 }
 
