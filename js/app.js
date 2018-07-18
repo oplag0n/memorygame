@@ -216,6 +216,28 @@ function toggleModal() {
     modal.classList.toggle('hide');
 }
 
+function writeModalStats() {
+    const timeStat = document.querySelector('.modal__time');
+    const clockTime = document.querySelector('.clock').innerHTML;
+    const moveStat = document.querySelector('.modal__moves');
+    const starsStat = document.querySelector('.modal__stars');
+    const stars = getStars();
+
+    timeStat.innerHTML = `Time = ${clockTime}`;
+    moveStat.innerHTML = `Moves = ${moves}`;
+    starsStat.innerHTML = `Stars = ${stars}`;
+}
+
+function getStars() {
+    stars = document.querySelectorAll('.stars li');
+    starCount = 0;
+    for (star of stars) {
+        if (star.style.display !== 'none') {
+            starCount++;
+        }
+    }
+}
+
 function win() {
             prompt ("Congratulations! You won the game with "+moves+" moves!");
 }
