@@ -51,8 +51,9 @@ function shuffle(array) {
 
 const deck = document.querySelector('.deck');
 let cardElements = document.getElementsByClassName('card');
-let matchedIndex = 0;
+let matched = 0;
 const totalCards = 16;
+const totalPairs = 8;
 let openCards = []; 
 let moves = 0;
 let clockOff = true;
@@ -146,6 +147,7 @@ function cardCheck() {
         openCards[0].classList.toggle("match");
         openCards[1].classList.toggle("match");
         openCards = [];
+        matched++;
         } else {
             setTimeout(() => {
                 console.log("Not a match");
@@ -154,6 +156,9 @@ function cardCheck() {
                 openCards = [];
             }, 1000);
         }
+    if (matched === totalPairs) {
+        gameOver();
+    }
 }
 
 function lockOpen() {
@@ -273,4 +278,10 @@ function resetStars() {
     for (star of starList) {
         star.style.display = 'inline';
     }
+}
+
+function gameOver () {
+    stopClock();
+    writeModalStats();
+    toggleModal();
 }
