@@ -90,6 +90,11 @@ document.querySelector('.modal__replay').addEventListener('click', () => {
     console.log(replay);
 });
 
+document.querySelector('.restart').addEventListener('click', resetGame);
+
+document.querySelector('.modal__replay').addEventListener('click', resetGame);
+
+
 // Functions
 
 function toggleCard(clickTarget) {
