@@ -93,7 +93,7 @@ document.querySelector('.modal__replay').addEventListener('click', () => {
 
 document.querySelector('.restart').addEventListener('click', resetGame);
 
-document.querySelector('.modal__replay').addEventListener('click', resetGame);
+document.querySelector('.modal__replay').addEventListener('click', replayGame);
 
 
 // Functions
@@ -257,6 +257,7 @@ function resetGame() {
     resetClockAndTime();
     resetMoves();
     resetStars();
+    resetCards();
     displayCards();
 }
 
@@ -284,4 +285,16 @@ function gameOver () {
     stopClock();
     writeModalStats();
     toggleModal();
+}
+
+function replayGame() {
+    resetGame();
+    toggleModal();
+}
+
+function resetCards() {
+    const cards = document.querySelectorAll('.deck li');
+    for (let card of cards) {
+        card.className = 'card';
+    }
 }
