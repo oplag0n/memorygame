@@ -185,7 +185,7 @@ function countMove() {
 }
 
 function checkScore() {
-    if (moves === 16 || moves === 24) {
+    if (moves === 18 || moves === 28) {
         hideStar();
     }
 }
