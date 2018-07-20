@@ -190,3 +190,22 @@ Media Queries
         margin: 0 0 1em;
     }
 }
+
+@media only screen and (max-width: 470px) {
+    .deck {
+        width: 100%;
+        min-height: 680px;
+        padding: 15px;
+        
+    }
+
+    .deck .card {
+        height: 18%;
+        width: 23%;
+        margin: 0 0 1em;
+    }
+
+    .score-panel {
+        width: 80%;
+    }
+}
