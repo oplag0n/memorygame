@@ -87,10 +87,6 @@ document.querySelector('.modal__cancel').addEventListener('click', () => {
     toggleModal();
 });
 
-document.querySelector('.modal__replay').addEventListener('click', () => {
-    console.log(replay);
-});
-
 document.querySelector('.restart').addEventListener('click', resetGame);
 
 document.querySelector('.modal__replay').addEventListener('click', replayGame);
@@ -244,13 +240,14 @@ function writeModalStats() {
 }
 
 function getStars() {
-    stars = document.querySelectorAll('.stars li');
-    starCount = 0;
+    let stars = document.querySelectorAll('.stars li');
+    let starCount = 0;
     for (star of stars) {
         if (star.style.display !== 'none') {
             starCount++;
         }
     }
+    return starCount;
 }
 
 function resetGame() {
@@ -258,7 +255,8 @@ function resetGame() {
     resetMoves();
     resetStars();
     resetCards();
-    displayCards();
+    matched = 0; 
+    displayCards(cards);
 }
 
 function resetClockAndTime() {
