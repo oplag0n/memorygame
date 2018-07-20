@@ -170,3 +170,23 @@ Modal style
 .hide {
     display: none;
 }
+
+
+/* 
+Media Queries
+*/
+
+@media only screen and (max-width: 470px) {
+    .deck {
+        width: 100%;
+        min-height: 680px;
+        padding: 32px;
+        box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
+        margin: 0 0 3em;
+    }
+
+    .deck .card {
+        height: 18%;
+        width: 23%;
+    }
+}
