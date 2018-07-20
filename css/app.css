@@ -189,9 +189,13 @@ Media Queries
         width: 23%;
         margin: 0 0 1em;
     }
+
+    .score-panel {
+        width: 80%;
+    }
 }
 
-@media only screen and (max-width: 470px) {
+@media only screen and (max-width: 680px) {
     .deck {
         width: 100%;
         min-height: 680px;
@@ -202,7 +206,7 @@ Media Queries
     .deck .card {
         height: 18%;
         width: 23%;
-        margin: 0 0 1em;
+        margin: 0 0 2em;
     }
 
     .score-panel {
